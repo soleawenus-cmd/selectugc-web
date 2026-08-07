@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select UGC — Bli en betalt creator</title>
+  <meta name="description" content="Select UGC kobler norske creators med internasjonale apper. Meld deg på og få muligheten til å jobbe med StudyFlash." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #e8650a;
+      --orange-light: #fff3eb;
+      --orange-border: #f0ddd0;
+      --orange-mid: #e8c5a5;
+      --bg: #fff8f3;
+      --white: #ffffff;
+      --text: #1c1c1c;
+      --muted: #888888;
+      --faint: #c0b4ac;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,248,243,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--orange-border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: -0.3px;
+    }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 24px 64px;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--orange-light);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      padding: 5px 14px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+      font-family: inherit;
+    }
+    .hero-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+    .hero-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--faint);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 24px 64px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .stat-chip {
+      background: var(--white);
+      border: 1px solid var(--orange-border);
+      border-radius: 50px;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .stat-chip strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .stat-chip span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 64px 24px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section > p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    /* ── CAMPAIGN CARD ── */
+    .campaign-card {
+      background: var(--white);
+      border: 1.5px solid var(--orange-mid);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .campaign-header {
+      background: linear-gradient(135deg, #1c1c1c 0%, #2d2d2d 100%);
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .campaign-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .campaign-logo-text {
+      font-size: 11px;
+      font-weight: 800;
+      color: #1c1c1c;
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+      text-align: center;
+    }
+    .campaign-info h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.4px;
+    }
+    .campaign-info p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 3px;
+    }
+    .campaign-badge {
+      margin-left: auto;
+      background: #e8650a;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .campaign-body {
+      padding: 28px;
+    }
+    .campaign-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .campaign-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .c-stat {
+      background: var(--bg);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .c-stat strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .c-stat span {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      display: block;
+    }
+    .campaign-cta {
+      display: block;
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .campaign-cta:hover { opacity: 0.9; }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--orange-border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--orange-light);
+      border: 1.5px solid var(--orange-border);
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── REQUIREMENTS ── */
+    .req-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 480px) { .req-grid { grid-template-columns: 1fr; } }
+    .req-item {
+      background: var(--white);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .req-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--orange-light);
+      border: 1.5px solid var(--orange-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .req-check svg { width: 10px; height: 10px; }
+    .req-item p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      gap: 12px;
+    }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--orange-light);
+      color: var(--orange);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.2s;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 20px 18px;
+    }
+
+    /* ── FORM SECTION ── */
+    .form-section {
+      background: var(--white);
+      border: 1.5px solid var(--orange-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      margin: 0 24px 64px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 480px) {
+      .form-section { padding: 28px 20px; margin: 0 16px 48px; }
+    }
+    .form-section h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .form-section > p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .form-row { display: flex; gap: 12px; }
+    @media (max-width: 480px) { .form-row { flex-direction: column; } }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1.5px solid var(--orange-border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--faint); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-hint { font-size: 11px; color: var(--faint); margin-top: 2px; }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 8px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-terms {
+      font-size: 11px;
+      color: var(--faint);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* ── SUCCESS ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 32px 0 16px;
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--orange-light);
+      border: 2px solid var(--orange-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px;
+    }
+    .success-msg h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .success-msg p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TRUST ── */
+    .trust-bar {
+      border-top: 1px solid var(--orange-border);
+      padding: 32px 24px;
+      text-align: center;
+      background: var(--white);
+    }
+    .trust-bar p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .trust-chips {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-chip {
+      background: var(--bg);
+      border: 1px solid var(--orange-border);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 24px;
+      text-align: center;
+      border-top: 1px solid var(--orange-border);
+    }
+    footer p { font-size: 13px; color: var(--faint); }
+    footer a { color: var(--orange); text-decoration: none; }
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .hero { padding: 56px 20px 48px; }
+      .campaign-stats { grid-template-columns: repeat(3, 1fr); }
+      .campaign-header { flex-wrap: wrap; }
+      .campaign-badge { margin-left: 0; }
+    }
+
+    /* ── SMOOTH SCROLL TARGET ── */
+    #meld-deg { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Select UGC</div>
+    <a href="#meld-deg" class="nav-cta">Meld deg på</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">Åpen kampanje</span>
+    <h1>Bli en <span>betalt</span> UGC creator</h1>
+    <p>Vi kobler norske creators med internasjonale apper som vil nå nye brukere gjennom deg. Ingen erfaring nødvendig — bare en telefon og lyst til å lage innhold.</p>
+    <a href="#meld-deg" class="hero-btn">Meld deg på nå →</a>
+    <p class="hero-note">Gratis å søke · Tar under 2 minutter</p>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-chip">
+      <strong>150 kr+</strong>
+      <span>per video</span>
+    </div>
+    <div class="stat-chip">
+      <strong>Ingen</strong>
+      <span>erfaring nødvendig</span>
+    </div>
+    <div class="stat-chip">
+      <strong>100%</strong>
+      <span>gratis å søke</span>
+    </div>
+  </div>
+
+  <!-- KAMPANJE -->
+  <section class="section" style="padding-top: 0;">
+    <div class="section-label">Aktiv kampanje</div>
+    <h2>Nå søker vi creators til</h2>
+    <p>Vi har én åpen kampanje akkurat nå. Les om hva som kreves og meld deg på nedenfor.</p>
+
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <div class="campaign-logo">
+          <div class="campaign-logo-text">Study<br>Flash</div>
+        </div>
+        <div class="campaign-info">
+          <h3>StudyFlash</h3>
+          <p>Internasjonal læringsapp · Norske creators søkes</p>
+        </div>
+        <span class="campaign-badge">Åpen nå</span>
+      </div>
+      <div class="campaign-body">
+        <p class="campaign-desc">
+          StudyFlash er en internasjonal app for effektiv læring med flashcards og AI. De ønsker norske creators som kan vise appen frem på TikTok på en naturlig og engasjerende måte. Du trenger ingen erfaring — det viktigste er at du er komfortabel foran kamera og er aktiv på TikTok.
+        </p>
+        <div class="campaign-stats">
+          <div class="c-stat">
+            <strong>150 kr+</strong>
+            <span>per video</span>
+          </div>
+          <div class="c-stat">
+            <strong>TikTok</strong>
+            <span>plattform</span>
+          </div>
+          <div class="c-stat">
+            <strong>Norge</strong>
+            <span>marked</span>
+          </div>
+        </div>
+        <a href="#meld-deg" class="campaign-cta">Søk på denne kampanjen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIK FUNGERER DET -->
+  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
+    <div class="section-label">Prosessen</div>
+    <h2>Slik fungerer det</h2>
+    <p>Vi gjør det enkelt å komme i gang. Her er hva som skjer fra du melder deg på til du er i gang.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Fyll ut skjemaet under</h4>
+          <p>Send inn litt info om deg selv — navn, TikTok-brukernavn og kontaktinfo. Det tar under 2 minutter.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Vi tar kontakt</h4>
+          <p>Vi går gjennom søknadene og tar kontakt med de som passer. Ingen lange ventetider.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Du sendes videre til StudyFlash</h4>
+          <p>For denne kampanjen videresendes du direkte til StudyFlash sitt eget creator-oppsett, der de tar deg gjennom resten og starter samarbeidet.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Lag innhold og bli betalt</h4>
+          <p>Du lager videoer for StudyFlash på TikTok og blir betalt per video du leverer. Enkelt og greit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KRAV -->
+  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
+    <div class="section-label">Kriterier</div>
+    <h2>Hvem ser vi etter?</h2>
+    <p>Det handler ikke om følgere eller erfaring. Det handler om hvem du er.</p>
+
+    <div class="req-grid">
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Komfortabel foran kamera — du trenger ikke være perfekt, bare naturlig</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Aktiv på TikTok eller villig til å starte en ny konto for kampanjen</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Bosatt i Norge og snakker norsk</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Kan poste innhold jevnlig i løpet av kampanjeperioden</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Ingen krav til antall følgere — nye kontoer er en fordel</p>
+      </div>
+      <div class="req-item">
+        <div class="req-check">
+          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p>Engasjert og åpen for å eksperimentere med innhold</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
+    <div class="section-label">Spørsmål og svar</div>
+    <h2>Vanlige spørsmål</h2>
+    <p style="margin-bottom: 28px;">Lurer du på noe? Her er svarene på det folk spør om mest.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Trenger jeg mange følgere for å søke?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Nei, absolutt ikke. For denne typen kampanjer er det faktisk en fordel å opprette en helt ny TikTok-konto, fordi TikTok gir nye kontoer ekstra spredning i starten. Det som teller er at du er aktiv og engasjert.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Hva skjer etter jeg melder meg på?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Vi går gjennom søknadene og tar kontakt med de som passer til kampanjen. For StudyFlash-samarbeidet vil du deretter bli satt i kontakt med StudyFlash sitt eget team som tar deg gjennom oppsett og onboarding.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Hvor mye kan jeg tjene?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Det avhenger av kampanjen og antall videoer du leverer. Betalingen er per video du lager. Mer info om betaling får du når du er godkjent og i kontakt med kampanjeteamet.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Er dette trygt? Blir jeg scamma?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Select UGC er en seriøs plattform med kontrakter som regulerer samarbeidet. StudyFlash er en etablert internasjonal app. Du vil aldri bli bedt om å betale noe — det er du som skal bli betalt. Vi er alltid tilgjengelige på DM om du lurer på noe.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kan jeg søke selv om jeg ikke har TikTok?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja! Det eneste du trenger er å være villig til å opprette en ny TikTok-konto for kampanjen. Det er gratis og tar bare noen minutter.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <div id="meld-deg">
+    <div class="form-section">
+      <h2>Meld deg på</h2>
+      <p>Fyll ut skjemaet så tar vi kontakt. Det tar under 2 minutter.</p>
+
+      <form id="signup-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="navn">Fullt navn *</label>
+            <input type="text" id="navn" name="navn" placeholder="Ola Nordmann" required />
+          </div>
+          <div class="form-group">
+            <label for="alder">Alder *</label>
+            <input type="number" id="alder" name="alder" placeholder="22" min="16" max="60" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="epost">E-postadresse *</label>
+          <input type="email" id="epost" name="epost" placeholder="navn@epost.no" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tlf">Telefonnummer *</label>
+          <input type="tel" id="tlf" name="tlf" placeholder="400 00 000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tiktok">TikTok-brukernavn</label>
+          <input type="text" id="tiktok" name="tiktok" placeholder="@brukernavn (la stå tomt hvis du ikke har)" />
+          <span class="form-hint">Skriv inn hvis du allerede har TikTok — ellers holder det å søke uten</span>
+        </div>
+
+        <div class="form-group">
+          <label for="by">By / sted i Norge *</label>
+          <input type="text" id="by" name="by" placeholder="Oslo" required />
+        </div>
+
+        <div class="form-group">
+          <label for="melding">Litt om deg (valgfritt)</label>
+          <textarea id="melding" name="melding" placeholder="Fortell litt om deg selv, hvorfor du er interessert, eller noe du vil at vi skal vite..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="submit-btn">
+          Send søknad →
+        </button>
+        <p class="form-terms">
+          Ved å sende inn samtykker du til at vi lagrer opplysningene dine for å kontakte deg om denne kampanjen. Vi deler ikke informasjonen din med andre uten din godkjenning.
+        </p>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        <div class="success-icon">✓</div>
+        <h3>Søknaden er sendt!</h3>
+        <p>Vi har mottatt informasjonen din og tar kontakt så snart vi har gått gjennom søknadene. Følg oss gjerne på Instagram for oppdateringer.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust-bar">
+    <p>Du er i trygge hender</p>
+    <div class="trust-chips">
+      <span class="trust-chip">✓ Kontrakt regulerer samarbeidet</span>
+      <span class="trust-chip">✓ Du betaler ingenting</span>
+      <span class="trust-chip">✓ Alltid tilgjengelig på DM</span>
+      <span class="trust-chip">✓ Seriøse samarbeidspartnere</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Select UGC</div>
+    <p>Spørsmål? Send oss en melding på Instagram eller e-post til <a href="mailto:hei@selectugc.com">hei@selectugc.com</a></p>
+    <p style="margin-top: 16px; font-size: 12px;">© 2026 Select UGC · Alle rettigheter forbeholdt</p>
+  </footer>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Form submit → Google Sheets
+    // ERSTATT DENNE URL-EN MED DIN GOOGLE APPS SCRIPT URL
+    const SHEET_URL = 'DIN_APPS_SCRIPT_URL_HER';
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sender...';
+
+      const form = e.target;
+      const data = {
+        navn: form.navn.value,
+        alder: form.alder.value,
+        epost: form.epost.value,
+        tlf: form.tlf.value,
+        tiktok: form.tiktok.value,
+        by: form.by.value,
+        melding: form.melding.value,
+        kampanje: 'StudyFlash',
+        dato: new Date().toLocaleString('nb-NO'),
+      };
+
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        form.style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Send søknad →';
+        alert('Noe gikk galt. Prøv igjen eller send e-post til hei@selectugc.com');
+      }
+    }
+  </script>
+</body>
+</html>
