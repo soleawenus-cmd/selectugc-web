@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Select UGC — Bli en betalt creator</title>
-  <meta name="description" content="Select UGC kobler norske creators med internasjonale apper. Meld deg på og få muligheten til å jobbe med StudyFlash." />
+  <meta name="description" content="Select UGC kobler norske creators med internasjonale apper. Meld deg på StudyFlash-kampanjen og tjen penger på TikTok-innhold du lager." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --orange: #e8650a;
       --orange-light: #fff3eb;
@@ -19,14 +18,12 @@
       --bg: #fff8f3;
       --white: #ffffff;
       --text: #1c1c1c;
-      --muted: #888888;
+      --muted: #777777;
       --faint: #c0b4ac;
       --radius: 16px;
       --radius-sm: 10px;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       background: var(--bg);
@@ -35,882 +32,597 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,248,243,0.92);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,248,243,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--orange-border);
-      padding: 0 24px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--orange);
-      letter-spacing: -0.3px;
-    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--orange); letter-spacing: -0.3px; }
     .nav-cta {
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      text-decoration: none;
-      transition: opacity 0.15s;
+      background: var(--orange); color: #fff; border: none;
+      border-radius: 50px; padding: 9px 22px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      font-family: inherit; text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+      display: inline-block;
     }
-    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
-      padding: 80px 24px 64px;
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 640px; margin: 0 auto; text-align: center;
     }
     .hero-eyebrow {
-      display: inline-block;
-      background: var(--orange-light);
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      border-radius: 50px;
-      padding: 5px 14px;
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--orange-light); color: var(--orange);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; border-radius: 50px;
+      padding: 5px 14px; margin-bottom: 24px;
     }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: #e8650a; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .hero h1 {
-      font-size: clamp(36px, 7vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: var(--text);
-      margin-bottom: 20px;
+      font-size: clamp(34px, 7vw, 52px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px; color: var(--text); margin-bottom: 18px;
     }
     .hero h1 span { color: var(--orange); }
     .hero p {
-      font-size: 17px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 17px; color: var(--muted); line-height: 1.75;
+      margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto;
     }
-    .hero-btn {
-      display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      padding: 16px 36px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: transform 0.15s, opacity 0.15s;
-      font-family: inherit;
+    .hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #fff;
+      font-size: 16px; font-weight: 700; padding: 15px 32px;
+      border-radius: 50px; text-decoration: none; border: none;
+      cursor: pointer; font-family: inherit;
+      transition: transform 0.15s, opacity 0.15s; display: inline-block;
     }
-    .hero-btn:hover { transform: translateY(-2px); opacity: 0.92; }
-    .hero-note {
-      margin-top: 14px;
-      font-size: 13px;
-      color: var(--faint);
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn-ghost {
+      background: transparent; color: var(--orange);
+      border: 2px solid var(--orange-border);
+      font-size: 15px; font-weight: 600; padding: 13px 24px;
+      border-radius: 50px; text-decoration: none; font-family: inherit;
+      transition: border-color 0.15s; display: inline-block;
     }
+    .btn-ghost:hover { border-color: var(--orange-mid); }
+    .hero-note { margin-top: 14px; font-size: 13px; color: var(--faint); }
 
-    /* ── STATS ── */
+    /* STATS */
     .stats {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 0 24px 64px;
-      max-width: 640px;
-      margin: 0 auto;
+      display: flex; gap: 10px; justify-content: center;
+      flex-wrap: wrap; padding: 0 24px 56px;
+      max-width: 600px; margin: 0 auto;
     }
     .stat-chip {
-      background: var(--white);
-      border: 1px solid var(--orange-border);
-      border-radius: 50px;
-      padding: 10px 20px;
-      text-align: center;
+      background: var(--white); border: 1px solid var(--orange-border);
+      border-radius: 50px; padding: 9px 20px; text-align: center;
     }
-    .stat-chip strong {
-      display: block;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--orange);
-    }
-    .stat-chip span {
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .stat-chip strong { display: block; font-size: 19px; font-weight: 800; color: var(--orange); }
+    .stat-chip span { font-size: 12px; color: var(--muted); }
 
-    /* ── SECTION WRAPPER ── */
-    .section {
-      padding: 64px 24px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    /* DIVIDER */
+    hr { border: none; border-top: 1px solid var(--orange-border); }
+
+    /* SECTION */
+    .section { padding: 56px 24px; max-width: 680px; margin: 0 auto; }
     .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--orange);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 11px; font-weight: 700; color: var(--orange);
+      letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px;
     }
     .section h2 {
-      font-size: clamp(26px, 5vw, 36px);
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      line-height: 1.2;
-      margin-bottom: 16px;
+      font-size: clamp(24px, 5vw, 34px); font-weight: 800;
+      letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 12px;
     }
-    .section > p {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
+    .section > p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
 
-    /* ── CAMPAIGN CARD ── */
+    /* URGENCY BAR */
+    .urgency-bar {
+      background: var(--white); border: 1.5px solid var(--orange-mid);
+      border-radius: var(--radius); padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .urgency-icon { font-size: 22px; flex-shrink: 0; }
+    .urgency-text { flex: 1; }
+    .urgency-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .urgency-track { height: 6px; background: var(--orange-border); border-radius: 3px; overflow: hidden; }
+    .urgency-fill { height: 100%; width: 72%; background: linear-gradient(90deg, #e8a070, var(--orange)); border-radius: 3px; }
+    .urgency-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+    /* CAMPAIGN CARD */
     .campaign-card {
-      background: var(--white);
-      border: 1.5px solid var(--orange-mid);
-      border-radius: var(--radius);
-      overflow: hidden;
+      background: var(--white); border: 1.5px solid var(--orange-mid);
+      border-radius: var(--radius); overflow: hidden;
     }
     .campaign-header {
-      background: linear-gradient(135deg, #1c1c1c 0%, #2d2d2d 100%);
-      padding: 32px 28px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+      padding: 28px 28px 24px;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
     }
     .campaign-logo {
-      width: 60px;
-      height: 60px;
-      border-radius: 14px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
+      width: 58px; height: 58px; border-radius: 14px; background: #fff;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .campaign-logo-text {
-      font-size: 11px;
-      font-weight: 800;
-      color: #1c1c1c;
-      letter-spacing: -0.3px;
-      line-height: 1.1;
-      text-align: center;
+    .campaign-logo-text { font-size: 10px; font-weight: 800; color: #1c1c1c; line-height: 1.1; text-align: center; }
+    .campaign-info h3 { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.4px; }
+    .campaign-info p { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+    .campaign-live {
+      margin-left: auto; display: flex; align-items: center; gap: 6px;
+      background: rgba(232,101,10,0.15); border: 1px solid rgba(232,101,10,0.35);
+      color: #ff8c42; font-size: 11px; font-weight: 700;
+      padding: 5px 12px; border-radius: 50px;
     }
-    .campaign-info h3 {
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.4px;
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #ff8c42; animation: pulse 1.5s infinite; }
+    .campaign-body { padding: 24px 28px; }
+    .campaign-desc { font-size: 14.5px; color: var(--muted); line-height: 1.75; margin-bottom: 22px; }
+    .campaign-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .chip {
+      background: var(--bg); border: 1px solid var(--orange-border);
+      border-radius: 50px; padding: 5px 14px;
+      font-size: 12px; font-weight: 600; color: var(--text);
     }
-    .campaign-info p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 3px;
-    }
-    .campaign-badge {
-      margin-left: auto;
-      background: #e8650a;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 50px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .campaign-body {
-      padding: 28px;
-    }
-    .campaign-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-    .campaign-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .c-stat {
-      background: var(--bg);
-      border: 1px solid var(--orange-border);
-      border-radius: var(--radius-sm);
-      padding: 12px 10px;
-      text-align: center;
-    }
-    .c-stat strong {
-      display: block;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--orange);
-    }
-    .c-stat span {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
-      display: block;
-    }
+    .campaign-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .c-stat { background: var(--bg); border: 1px solid var(--orange-border); border-radius: var(--radius-sm); padding: 12px 8px; text-align: center; }
+    .c-stat strong { display: block; font-size: 17px; font-weight: 800; color: var(--orange); }
+    .c-stat span { font-size: 10px; color: var(--muted); margin-top: 2px; display: block; }
     .campaign-cta {
-      display: block;
-      background: var(--orange);
-      color: #fff;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: opacity 0.15s;
+      display: block; background: var(--orange); color: #fff;
+      text-align: center; font-size: 15px; font-weight: 700;
+      padding: 15px; border-radius: var(--radius-sm);
+      text-decoration: none; transition: opacity 0.15s;
+      border: none; cursor: pointer; font-family: inherit; width: 100%;
     }
     .campaign-cta:hover { opacity: 0.9; }
 
-    /* ── HOW IT WORKS ── */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--orange-border);
-    }
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 16px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--orange-border); }
     .step:last-child { border-bottom: none; }
     .step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--orange-light);
-      border: 1.5px solid var(--orange-border);
-      color: var(--orange);
-      font-size: 14px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--orange-light); border: 1.5px solid var(--orange-border);
+      color: var(--orange); font-size: 13px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
     }
-    .step-content h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .step-content p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .step-content h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .step-content p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
 
-    /* ── REQUIREMENTS ── */
-    .req-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 480px) { .req-grid { grid-template-columns: 1fr; } }
+    /* REQ */
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media(max-width:480px){.req-grid{grid-template-columns:1fr;}}
     .req-item {
-      background: var(--white);
-      border: 1px solid var(--orange-border);
-      border-radius: var(--radius-sm);
-      padding: 16px 18px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      background: var(--white); border: 1px solid var(--orange-border);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 10px;
     }
     .req-check {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--orange-light);
-      border: 1.5px solid var(--orange-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--orange-light); border: 1.5px solid var(--orange-mid);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
     }
     .req-check svg { width: 10px; height: 10px; }
-    .req-item p {
-      font-size: 13.5px;
-      color: var(--text);
-      line-height: 1.5;
-    }
+    .req-item p { font-size: 13px; color: var(--text); line-height: 1.55; }
 
-    /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
-    .faq-item {
-      background: var(--white);
-      border: 1px solid var(--orange-border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
+    /* WHAT YOU MAKE */
+    .content-types { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media(max-width:480px){.content-types{grid-template-columns:1fr;}}
+    .content-type {
+      background: var(--white); border: 1px solid var(--orange-border);
+      border-radius: var(--radius-sm); padding: 18px 16px;
     }
+    .content-type-icon { font-size: 24px; margin-bottom: 8px; }
+    .content-type h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .content-type p { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--white); border: 1px solid var(--orange-border); border-radius: var(--radius-sm); overflow: hidden; }
     .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      text-align: left;
-      gap: 12px;
+      width: 100%; background: none; border: none; padding: 17px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; font-family: inherit; font-size: 14.5px;
+      font-weight: 600; color: var(--text); text-align: left; gap: 10px;
     }
     .faq-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--orange-light);
-      color: var(--orange);
-      font-size: 16px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.2s;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--orange-light); color: var(--orange);
+      font-size: 16px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.2s;
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-a {
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
+      padding: 0 20px; max-height: 0; overflow: hidden;
       transition: max-height 0.3s ease, padding 0.2s;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+      font-size: 13.5px; color: var(--muted); line-height: 1.7;
     }
-    .faq-item.open .faq-a {
-      max-height: 200px;
-      padding: 0 20px 18px;
-    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 18px; }
 
-    /* ── FORM SECTION ── */
-    .form-section {
-      background: var(--white);
-      border: 1.5px solid var(--orange-border);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      margin: 0 24px 64px;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
+    /* FORM */
+    .form-wrap {
+      background: var(--white); border: 1.5px solid var(--orange-border);
+      border-radius: var(--radius); padding: 36px 32px;
+      max-width: 640px; margin: 0 auto 64px;
     }
-    @media (max-width: 480px) {
-      .form-section { padding: 28px 20px; margin: 0 16px 48px; }
-    }
-    .form-section h2 {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-    .form-section > p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
+    @media(max-width:480px){ .form-wrap { padding: 26px 18px; margin: 0 16px 48px; } }
+    .form-wrap h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .form-wrap > p { font-size: 14px; color: var(--muted); margin-bottom: 26px; }
     .form-row { display: flex; gap: 12px; }
-    @media (max-width: 480px) { .form-row { flex-direction: column; } }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-      flex: 1;
+    @media(max-width:480px){.form-row{flex-direction:column;}}
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; flex: 1; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--bg); border: 1.5px solid var(--orange-border);
+      border-radius: 10px; padding: 12px 14px;
+      font-size: 15px; color: var(--text); font-family: inherit;
+      outline: none; transition: border-color 0.15s; width: 100%;
     }
-    .form-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--bg);
-      border: 1.5px solid var(--orange-border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 15px;
-      color: var(--text);
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.15s;
-      width: 100%;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--orange);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--faint); }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-hint { font-size: 11px; color: var(--faint); margin-top: 2px; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--faint); }
+    .form-group textarea { resize: vertical; min-height: 85px; }
+    .form-hint { font-size: 11px; color: var(--faint); }
     .form-submit {
-      width: 100%;
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      margin-top: 8px;
+      width: 100%; background: var(--orange); color: #fff; border: none;
+      border-radius: 12px; padding: 16px; font-size: 16px; font-weight: 700;
+      cursor: pointer; font-family: inherit; margin-top: 6px;
       transition: opacity 0.15s, transform 0.15s;
     }
     .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .form-terms {
-      font-size: 11px;
-      color: var(--faint);
-      text-align: center;
-      margin-top: 12px;
-      line-height: 1.6;
-    }
+    .form-terms { font-size: 11px; color: var(--faint); text-align: center; margin-top: 12px; line-height: 1.6; }
 
-    /* ── SUCCESS ── */
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 32px 0 16px;
-    }
-    .success-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--orange-light);
-      border: 2px solid var(--orange-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-      font-size: 28px;
-    }
-    .success-msg h3 {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .success-msg p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── TRUST ── */
-    .trust-bar {
-      border-top: 1px solid var(--orange-border);
-      padding: 32px 24px;
-      text-align: center;
-      background: var(--white);
-    }
-    .trust-bar p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    .trust-chips {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    /* TRUST */
+    .trust-bar { border-top: 1px solid var(--orange-border); padding: 30px 24px; text-align: center; background: var(--white); }
+    .trust-bar p { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .trust-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .trust-chip {
-      background: var(--bg);
-      border: 1px solid var(--orange-border);
-      border-radius: 50px;
-      padding: 7px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text);
+      background: var(--bg); border: 1px solid var(--orange-border);
+      border-radius: 50px; padding: 7px 16px; font-size: 12px; font-weight: 600; color: var(--text);
     }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 28px 24px;
-      text-align: center;
-      border-top: 1px solid var(--orange-border);
-    }
+    /* FOOTER */
+    footer { padding: 28px 24px; text-align: center; border-top: 1px solid var(--orange-border); }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--orange); margin-bottom: 8px; }
     footer p { font-size: 13px; color: var(--faint); }
     footer a { color: var(--orange); text-decoration: none; }
-    .footer-logo {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--orange);
-      margin-bottom: 8px;
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: #fff;
+      font-size: 14px; font-weight: 700;
+      padding: 10px 22px; border-radius: 50px;
+      text-decoration: none; margin-bottom: 16px;
+      transition: opacity 0.15s;
     }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 480px) {
-      .hero { padding: 56px 20px 48px; }
-      .campaign-stats { grid-template-columns: repeat(3, 1fr); }
-      .campaign-header { flex-wrap: wrap; }
-      .campaign-badge { margin-left: 0; }
-    }
-
-    /* ── SMOOTH SCROLL TARGET ── */
-    #meld-deg { scroll-margin-top: 80px; }
+    .wa-btn:hover { opacity: 0.88; }
+    .wa-icon { font-size: 18px; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Select UGC</div>
-    <a href="#meld-deg" class="nav-cta">Meld deg på</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Select UGC</div>
+  <a href="#meld-deg" class="nav-cta">Meld deg på</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <span class="hero-eyebrow">Åpen kampanje</span>
-    <h1>Bli en <span>betalt</span> UGC creator</h1>
-    <p>Vi kobler norske creators med internasjonale apper som vil nå nye brukere gjennom deg. Ingen erfaring nødvendig — bare en telefon og lyst til å lage innhold.</p>
-    <a href="#meld-deg" class="hero-btn">Meld deg på nå →</a>
-    <p class="hero-note">Gratis å søke · Tar under 2 minutter</p>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow"><span class="hero-dot"></span> Åpen kampanje · StudyFlash</span>
+  <h1>Tjen penger på<br><span>TikTok-innhold</span><br>du lager hjemme</h1>
+  <p>Vi kobler norske creators med internasjonale apper. Ingen erfaring nødvendig — bare en telefon og lyst til å prøve noe nytt.</p>
+  <div class="hero-btns">
+    <a href="#meld-deg" class="btn-primary">Søk nå — gratis →</a>
+    <a href="#hvordan" class="btn-ghost">Se hvordan det fungerer</a>
+  </div>
+  <p class="hero-note">Tar under 2 minutter · Ingen forpliktelse</p>
+</section>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat-chip">
-      <strong>150 kr+</strong>
-      <span>per video</span>
-    </div>
-    <div class="stat-chip">
-      <strong>Ingen</strong>
-      <span>erfaring nødvendig</span>
-    </div>
-    <div class="stat-chip">
-      <strong>100%</strong>
-      <span>gratis å søke</span>
-    </div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-chip"><strong>fra 100 kr</strong><span>per video + bonuser</span></div>
+  <div class="stat-chip"><strong>0</strong><span>krav til følgere</span></div>
+  <div class="stat-chip"><strong>1B+</strong><span>views globalt</span></div>
+</div>
+
+<hr>
+
+<!-- KAMPANJE -->
+<section class="section" style="padding-top:52px;">
+  <div class="section-label">Aktiv kampanje</div>
+  <h2>Én kampanje åpen nå</h2>
+  <p>Vi jobber med én app av gangen slik at vi kan følge opp ordentlig. Her er hva som er tilgjengelig akkurat nå.</p>
+
+  <div style="display:flex;align-items:center;gap:10px;background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:20px;">
+    <span style="font-size:16px;">⚡</span>
+    <p style="font-size:13px;color:var(--text);font-weight:500;margin:0;">Vi tar imot et begrenset antall søknader per kampanje. Søk tidlig for å sikre plassen din.</p>
   </div>
 
-  <!-- KAMPANJE -->
-  <section class="section" style="padding-top: 0;">
-    <div class="section-label">Aktiv kampanje</div>
-    <h2>Nå søker vi creators til</h2>
-    <p>Vi har én åpen kampanje akkurat nå. Les om hva som kreves og meld deg på nedenfor.</p>
-
-    <div class="campaign-card">
-      <div class="campaign-header">
-        <div class="campaign-logo">
-          <div class="campaign-logo-text">Study<br>Flash</div>
-        </div>
-        <div class="campaign-info">
-          <h3>StudyFlash</h3>
-          <p>Internasjonal læringsapp · Norske creators søkes</p>
-        </div>
-        <span class="campaign-badge">Åpen nå</span>
+  <div class="campaign-card">
+    <div class="campaign-header">
+      <div class="campaign-logo"><div class="campaign-logo-text">Study<br>Flash</div></div>
+      <div class="campaign-info">
+        <h3>StudyFlash</h3>
+        <p>Internasjonal læringsapp · Schweiz</p>
       </div>
-      <div class="campaign-body">
-        <p class="campaign-desc">
-          StudyFlash er en internasjonal app for effektiv læring med flashcards og AI. De ønsker norske creators som kan vise appen frem på TikTok på en naturlig og engasjerende måte. Du trenger ingen erfaring — det viktigste er at du er komfortabel foran kamera og er aktiv på TikTok.
-        </p>
-        <div class="campaign-stats">
-          <div class="c-stat">
-            <strong>150 kr+</strong>
-            <span>per video</span>
-          </div>
-          <div class="c-stat">
-            <strong>TikTok</strong>
-            <span>plattform</span>
-          </div>
-          <div class="c-stat">
-            <strong>Norge</strong>
-            <span>marked</span>
-          </div>
-        </div>
-        <a href="#meld-deg" class="campaign-cta">Søk på denne kampanjen →</a>
+      <div class="campaign-live"><span class="live-dot"></span> Åpen nå</div>
+    </div>
+    <div class="campaign-body">
+      <p class="campaign-desc">
+        StudyFlash er en internasjonal app som hjelper studenter lære raskere med flashcards, AI og automatisk oppsummering av notater. De ønsker norske TikTok-creators som kan vise appen frem på en naturlig måte — som om du tipser en venn om noe kult du har funnet. Du trenger ikke være student for å søke.
+      </p>
+      <div class="campaign-chips">
+        <span class="chip">📱 TikTok</span>
+        <span class="chip">🎓 Studenter og unge voksne</span>
+        <span class="chip">🇳🇴 Norsk marked</span>
+        <span class="chip">✂️ Korte videoer</span>
+        <span class="chip">🎁 Gratis Premium-tilgang</span>
+      </div>
+      <div class="campaign-stats">
+        <div class="c-stat"><strong>fra €10</strong><span>per video garantert</span></div>
+        <div class="c-stat"><strong>TikTok</strong><span>plattform</span></div>
+        <div class="c-stat"><strong>€3 000+</strong><span>topp creators/mnd</span></div>
+      </div>
+      <button class="campaign-cta" onclick="document.getElementById('meld-deg').scrollIntoView({behavior:'smooth'})">
+        Søk på denne kampanjen →
+      </button>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- SLIK FUNGERER DET -->
+<section class="section" id="hvordan">
+  <div class="section-label">Prosessen</div>
+  <h2>Slik fungerer det</h2>
+  <p>Fra du søker til du er i gang med å lage innhold og tjene penger.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Fyll ut skjemaet under</h4>
+        <p>Send inn litt info om deg selv — navn, kontaktinfo og eventuelt TikTok-brukernavn. Tar under 2 minutter.</p>
       </div>
     </div>
-  </section>
-
-  <!-- SLIK FUNGERER DET -->
-  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
-    <div class="section-label">Prosessen</div>
-    <h2>Slik fungerer det</h2>
-    <p>Vi gjør det enkelt å komme i gang. Her er hva som skjer fra du melder deg på til du er i gang.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h4>Fyll ut skjemaet under</h4>
-          <p>Send inn litt info om deg selv — navn, TikTok-brukernavn og kontaktinfo. Det tar under 2 minutter.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h4>Vi tar kontakt</h4>
-          <p>Vi går gjennom søknadene og tar kontakt med de som passer. Ingen lange ventetider.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h4>Du sendes videre til StudyFlash</h4>
-          <p>For denne kampanjen videresendes du direkte til StudyFlash sitt eget creator-oppsett, der de tar deg gjennom resten og starter samarbeidet.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h4>Lag innhold og bli betalt</h4>
-          <p>Du lager videoer for StudyFlash på TikTok og blir betalt per video du leverer. Enkelt og greit.</p>
-        </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Vi tar kontakt</h4>
+        <p>Vi går gjennom søknadene og kontakter deg raskt. Passer du til kampanjen, sendes du videre til StudyFlash.</p>
       </div>
     </div>
-  </section>
-
-  <!-- KRAV -->
-  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
-    <div class="section-label">Kriterier</div>
-    <h2>Hvem ser vi etter?</h2>
-    <p>Det handler ikke om følgere eller erfaring. Det handler om hvem du er.</p>
-
-    <div class="req-grid">
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Komfortabel foran kamera — du trenger ikke være perfekt, bare naturlig</p>
-      </div>
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Aktiv på TikTok eller villig til å starte en ny konto for kampanjen</p>
-      </div>
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Bosatt i Norge og snakker norsk</p>
-      </div>
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Kan poste innhold jevnlig i løpet av kampanjeperioden</p>
-      </div>
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Ingen krav til antall følgere — nye kontoer er en fordel</p>
-      </div>
-      <div class="req-item">
-        <div class="req-check">
-          <svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p>Engasjert og åpen for å eksperimentere med innhold</p>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Onboarding med StudyFlash</h4>
+        <p>StudyFlash har sitt eget team som tar deg gjennom oppsettet — hva du skal lage, retningslinjer og hvordan du kobler TikTok-kontoen.</p>
       </div>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" style="border-top: 1px solid var(--orange-border); padding-top: 64px;">
-    <div class="section-label">Spørsmål og svar</div>
-    <h2>Vanlige spørsmål</h2>
-    <p style="margin-bottom: 28px;">Lurer du på noe? Her er svarene på det folk spør om mest.</p>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Trenger jeg mange følgere for å søke?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Nei, absolutt ikke. For denne typen kampanjer er det faktisk en fordel å opprette en helt ny TikTok-konto, fordi TikTok gir nye kontoer ekstra spredning i starten. Det som teller er at du er aktiv og engasjert.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Hva skjer etter jeg melder meg på?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Vi går gjennom søknadene og tar kontakt med de som passer til kampanjen. For StudyFlash-samarbeidet vil du deretter bli satt i kontakt med StudyFlash sitt eget team som tar deg gjennom oppsett og onboarding.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Hvor mye kan jeg tjene?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Det avhenger av kampanjen og antall videoer du leverer. Betalingen er per video du lager. Mer info om betaling får du når du er godkjent og i kontakt med kampanjeteamet.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Er dette trygt? Blir jeg scamma?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Select UGC er en seriøs plattform med kontrakter som regulerer samarbeidet. StudyFlash er en etablert internasjonal app. Du vil aldri bli bedt om å betale noe — det er du som skal bli betalt. Vi er alltid tilgjengelige på DM om du lurer på noe.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Kan jeg søke selv om jeg ikke har TikTok?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Ja! Det eneste du trenger er å være villig til å opprette en ny TikTok-konto for kampanjen. Det er gratis og tar bare noen minutter.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <div id="meld-deg">
-    <div class="form-section">
-      <h2>Meld deg på</h2>
-      <p>Fyll ut skjemaet så tar vi kontakt. Det tar under 2 minutter.</p>
-
-      <form id="signup-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="navn">Fullt navn *</label>
-            <input type="text" id="navn" name="navn" placeholder="Ola Nordmann" required />
-          </div>
-          <div class="form-group">
-            <label for="alder">Alder *</label>
-            <input type="number" id="alder" name="alder" placeholder="22" min="16" max="60" required />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="epost">E-postadresse *</label>
-          <input type="email" id="epost" name="epost" placeholder="navn@epost.no" required />
-        </div>
-
-        <div class="form-group">
-          <label for="tlf">Telefonnummer *</label>
-          <input type="tel" id="tlf" name="tlf" placeholder="400 00 000" required />
-        </div>
-
-        <div class="form-group">
-          <label for="tiktok">TikTok-brukernavn</label>
-          <input type="text" id="tiktok" name="tiktok" placeholder="@brukernavn (la stå tomt hvis du ikke har)" />
-          <span class="form-hint">Skriv inn hvis du allerede har TikTok — ellers holder det å søke uten</span>
-        </div>
-
-        <div class="form-group">
-          <label for="by">By / sted i Norge *</label>
-          <input type="text" id="by" name="by" placeholder="Oslo" required />
-        </div>
-
-        <div class="form-group">
-          <label for="melding">Litt om deg (valgfritt)</label>
-          <textarea id="melding" name="melding" placeholder="Fortell litt om deg selv, hvorfor du er interessert, eller noe du vil at vi skal vite..."></textarea>
-        </div>
-
-        <button type="submit" class="form-submit" id="submit-btn">
-          Send søknad →
-        </button>
-        <p class="form-terms">
-          Ved å sende inn samtykker du til at vi lagrer opplysningene dine for å kontakte deg om denne kampanjen. Vi deler ikke informasjonen din med andre uten din godkjenning.
-        </p>
-      </form>
-
-      <div class="success-msg" id="success-msg">
-        <div class="success-icon">✓</div>
-        <h3>Søknaden er sendt!</h3>
-        <p>Vi har mottatt informasjonen din og tar kontakt så snart vi har gått gjennom søknadene. Følg oss gjerne på Instagram for oppdateringer.</p>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Lag videoer og bli betalt</h4>
+        <p>Du oppretter en dedikert TikTok-konto for kampanjen og poster én video daglig. Base pay er garantert per video — uavhengig av views. Bonuser kommer på toppen ved 100K+ views.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- TRUST -->
-  <div class="trust-bar">
-    <p>Du er i trygge hender</p>
-    <div class="trust-chips">
-      <span class="trust-chip">✓ Kontrakt regulerer samarbeidet</span>
-      <span class="trust-chip">✓ Du betaler ingenting</span>
-      <span class="trust-chip">✓ Alltid tilgjengelig på DM</span>
-      <span class="trust-chip">✓ Seriøse samarbeidspartnere</span>
+<hr>
+
+<!-- HVA DU LAGER -->
+<section class="section">
+  <div class="section-label">Innholdstyper</div>
+  <h2>Hva slags videoer lager du?</h2>
+  <p>Naturlig og ekte innhold som føles som en anbefaling fra en venn — ikke en reklame.</p>
+  <div class="content-types">
+    <div class="content-type">
+      <div class="content-type-icon">📚</div>
+      <h4>«Jeg studerer med denne appen»</h4>
+      <p>Vis appen i bruk mens du studerer eller pugger til eksamen. Autentisk og relaterbart.</p>
+    </div>
+    <div class="content-type">
+      <div class="content-type-icon">🎯</div>
+      <h4>«Dette visste jeg ikke om StudyFlash»</h4>
+      <p>Hook-videoer som åpner med noe overraskende eller nyttig om appen.</p>
+    </div>
+    <div class="content-type">
+      <div class="content-type-icon">⚡</div>
+      <h4>«POV: Du finner den perfekte studieappen»</h4>
+      <p>Trending POV-format som fungerer godt på TikTok akkurat nå.</p>
+    </div>
+    <div class="content-type">
+      <div class="content-type-icon">📈</div>
+      <h4>«Dag 1 vs dag 30 med StudyFlash»</h4>
+      <p>Fremgangsvideoer som viser reell nytte av appen over tid.</p>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Select UGC</div>
-    <p>Spørsmål? Send oss en melding på Instagram eller e-post til <a href="mailto:hei@selectugc.com">hei@selectugc.com</a></p>
-    <p style="margin-top: 16px; font-size: 12px;">© 2026 Select UGC · Alle rettigheter forbeholdt</p>
-  </footer>
+<hr>
 
-  <script>
-    // FAQ toggle
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
+<!-- KRITERIER -->
+<section class="section">
+  <div class="section-label">Kriterier</div>
+  <h2>Hvem ser vi etter?</h2>
+  <p>Det handler ikke om følgere eller erfaring. Det handler om hvem du er.</p>
+  <div class="req-grid">
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Komfortabel foran kamera — naturlig, ikke perfekt</p>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Aktiv på TikTok med noen videoer — erfaring med plattformen er et stort pluss</p>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Bosatt i Norge og snakker norsk</p>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Kan poste innhold jevnlig i minst 14 dager</p>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Ingen krav til følgere — nye kontoer er faktisk en fordel</p>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="#e8650a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <p>Du trenger ikke være student — nyutdannede og folk som liker læring er også velkomne</p>
+    </div>
+  </div>
+</section>
 
-    // Form submit → Google Sheets
-    // ERSTATT DENNE URL-EN MED DIN GOOGLE APPS SCRIPT URL
-    const SHEET_URL = 'DIN_APPS_SCRIPT_URL_HER';
+<hr>
 
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sender...';
+<!-- FAQ -->
+<section class="section">
+  <div class="section-label">Spørsmål og svar</div>
+  <h2>Vanlige spørsmål</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Trenger jeg mange følgere?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Nei, absolutt ikke. For UGC-kampanjer oppretter du en ny TikTok-konto spesifikt for kampanjen. TikTok gir nye kontoer ekstra synlighet i starten — så det er faktisk en fordel å begynne fra null.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Hva er UGC, og er dette noe for meg?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">UGC (User-Generated Content) er innhold laget av vanlige folk — ikke profesjonelle skuespillere eller produksjonsselskaper. Tanken er at det skal se ekte og naturlig ut. Hvis du er komfortabel med å ta opp deg selv med telefonen, er dette noe for deg.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Er dette trygt? Kan jeg stole på dette?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Select UGC er en seriøs plattform med kontrakter som regulerer samarbeidet. StudyFlash er en etablert internasjonal app med tusenvis av brukere. Du vil aldri bli bedt om å betale noe — det er du som skal bli betalt. Ta gjerne kontakt på WhatsApp hvis du har spørsmål før du søker.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Hva skjer etter at jeg søker?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Vi kontakter deg raskt — vanligvis innen 24–48 timer. Passer du til kampanjen, setter vi deg i kontakt med StudyFlash sitt team som tar deg gjennom resten av prosessen.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Hvor mye kan jeg tjene?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Base pay starter på €10 per video og skalerer med erfaring og format. Bonuser starter ved 100K views per video. Topp creators tjener €3 000+ per måned. Base pay er garantert for alle videoer som møter kvalitetskravene — selv om videoen ikke går viralt.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Trenger jeg TikTok-erfaring for å søke?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Vi foretrekker creators som allerede er aktive på TikTok og har noen videoer på profilen. Det gjør det mye enklere for oss å se om du kan passe til kampanjen, og onboardingen går raskere for begge parter. Har du ikke TikTok fra før oppfordrer vi deg til å lage noen videoer og bli litt kjent med plattformen før du søker.</div>
+    </div>
+  </div>
+</section>
 
-      const form = e.target;
-      const data = {
-        navn: form.navn.value,
-        alder: form.alder.value,
-        epost: form.epost.value,
-        tlf: form.tlf.value,
-        tiktok: form.tiktok.value,
-        by: form.by.value,
-        melding: form.melding.value,
-        kampanje: 'StudyFlash',
-        dato: new Date().toLocaleString('nb-NO'),
-      };
+<hr>
 
-      try {
-        await fetch(SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        form.style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Send søknad →';
-        alert('Noe gikk galt. Prøv igjen eller send e-post til hei@selectugc.com');
-      }
-    }
-  </script>
+<!-- FORM -->
+<div id="meld-deg" style="padding: 56px 24px 0;">
+  <div class="form-wrap">
+    <h2>Meld deg på</h2>
+    <p>Fyll ut skjemaet så tar vi kontakt innen 48 timer.</p>
+
+    <form name="pamelding" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/takk">
+      <input type="hidden" name="form-name" value="pamelding" />
+      <input type="hidden" name="kampanje" value="StudyFlash" />
+      <p style="display:none;"><input name="bot-field" /></p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="navn">Fullt navn *</label>
+          <input type="text" id="navn" name="navn" placeholder="Ola Nordmann" required />
+        </div>
+        <div class="form-group">
+          <label for="alder">Alder *</label>
+          <input type="number" id="alder" name="alder" placeholder="22" min="15" max="60" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="epost">E-postadresse *</label>
+        <input type="email" id="epost" name="epost" placeholder="navn@epost.no" required />
+      </div>
+
+      <div class="form-group">
+        <label for="tlf">Telefonnummer *</label>
+        <input type="tel" id="tlf" name="tlf" placeholder="400 00 000" required />
+      </div>
+
+      <div class="form-group">
+        <label for="tiktok">Link til TikTok-profilen din *</label>
+        <input type="url" id="tiktok" name="tiktok" placeholder="https://www.tiktok.com/@brukernavn" required />
+        <span class="form-hint">Lim inn lenken til TikTok-profilen din — vi bruker den til å vurdere søknaden din.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="by">By / sted i Norge *</label>
+        <input type="text" id="by" name="by" placeholder="Oslo" required />
+      </div>
+
+      <div class="form-group">
+        <label for="melding">Litt om deg (valgfritt)</label>
+        <textarea id="melding" name="melding" placeholder="Fortell gjerne litt om deg selv eller hvorfor du er interessert..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send søknad →</button>
+      <p class="form-terms">
+        Vi tar vare på informasjonen din og bruker den kun til å kontakte deg om denne kampanjen. Vi deler ikke data uten din godkjenning.
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust-bar">
+  <p>Du er i trygge hender</p>
+  <div class="trust-chips">
+    <span class="trust-chip">✓ Kontrakt regulerer samarbeidet</span>
+    <span class="trust-chip">✓ Du betaler ingenting</span>
+    <span class="trust-chip">✓ Seriøse samarbeidspartnere</span>
+    <span class="trust-chip">✓ Svar innen 48 timer</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Select UGC</div>
+  <p style="margin-bottom:14px;">Lurer du på noe? Ta kontakt — vi svarer raskt.</p>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:16px;">
+    <a href="https://wa.me/4746677699" class="wa-btn" target="_blank">
+      <span class="wa-icon">💬</span> WhatsApp — +47 466 77 699
+    </a>
+    <a href="mailto:solea@wenus.net" style="font-size:14px;color:var(--orange);text-decoration:none;font-weight:600;">
+      ✉️ solea@wenus.net
+    </a>
+  </div>
+  <p style="font-size: 12px; margin-top: 12px;">© 2026 Select UGC · Alle rettigheter forbeholdt</p>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
 </body>
 </html>
